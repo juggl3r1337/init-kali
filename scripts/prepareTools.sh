@@ -9,6 +9,14 @@ sudo apt install -y proxychains4 git python3 python3-venv python3-packaging soca
 
 # Install the other tools
 
+## install havoc
+echo '[+] Installing Havoc'
+git clone https://github.com/HavocFramework/Havoc.git ~/tools/havoc
+
+## install sliver
+cho '[+] Installing Sliver'
+curl https://sliver.sh/install|sudo bash
+
 ## Install golang
 echo '[+] Installing golang'
 wget https://go.dev/dl/go1.24.3.linux-amd64.tar.gz
