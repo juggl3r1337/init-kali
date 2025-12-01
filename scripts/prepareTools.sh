@@ -5,9 +5,16 @@
 
 echo '[+] Installing tools with apt'
 sudo apt update
-sudo apt install -y proxychains4 git python3 python3-venv python3-packaging socat iptables wget tar ssh sshuttle unzip
+sudo apt install -y proxychains4 fzf git python3 python3-venv python3-packaging socat iptables wget tar ssh sshuttle unzip
 
 # Install the other tools
+#
+## install ohmyszh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+
+## install zoxide
+curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
 ## install havoc
 echo '[+] Installing Havoc'
