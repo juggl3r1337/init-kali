@@ -9,8 +9,7 @@ sudo apt install -y proxychains4 fzf git python3 python3-venv python3-packaging 
 
 # Install the other tools
 #
-## install ohmyszh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 
 
 ## install zoxide
@@ -21,7 +20,7 @@ echo '[+] Installing Havoc'
 git clone https://github.com/HavocFramework/Havoc.git ~/tools/havoc
 
 ## install sliver
-cho '[+] Installing Sliver'
+echo '[+] Installing Sliver'
 curl https://sliver.sh/install|sudo bash
 
 ## Install golang
