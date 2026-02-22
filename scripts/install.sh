@@ -55,19 +55,17 @@ cp -R ./init-kali/zellij/ $HOME/.config/zellij/
 # install other apt tools
 sudo apt install -y obsidian tor torbrowser-launcher
 
-# write aliases
-mkdir ~/.scripts
-cp ./init-kali/aliases/logme.sh ./init-kali/aliases/dirmaker.sh ~/.scripts/
-echo 'alias logme="~/.scripts/logme.sh"' >> ~/.zshrc
-echo 'alias htb-mkdir="~/.scripts/dirmaker.sh"' >> ~/.zshrc
-
-# for now, manually go change ZSH prompt to include timestamp using ` -[%D{%m\/%d}-%*] `
-
 ## install ohmyszh
 ### still need to pull ohmyzsh config in
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-## i think ohmyzsh config and zellij files are outstanding TODO, as well as ohmyzsh prompt/theme
+# install zshrc with customized prompt and aliases
+cp ./init-kali/zsh/.zshrc $HOME/
+
+# move over scripts for aliases
+mkdir ~/.scripts
+cp ./init-kali/aliases/logme.sh ./init-kali/aliases/dirmaker.sh ~/.scripts/
+
 ## what about any microservices
 ## and what about any llm tools
 

@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -72,8 +72,11 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git colorize fzf sudo zoxide)
 
-
 source $ZSH/oh-my-zsh.sh
+
+# Add timestamp to the beginning of the prompt
+PROMPT="[%D{%m/%d %H:%M:%S}] %{$fg_bold[cyan]%}%~%{$reset_color%} %(?:%{$fg_bold[green]%}%1{➜%} :%{$fg_bold[red]%}%1{➜%} ) $(git_prompt_info)%{$reset_color%}"
+# Show full path instead of current directory
 
 # User configuration
 
@@ -103,6 +106,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-#
-export PATH="$PATH:/home/kali/.local/bin"
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+export PATH=$HOME/.cargo/bin:$PATH
+alias logme="~/.scripts/logme.sh"
+alias htb-mkdir="~/.scripts/dirmaker.sh"
