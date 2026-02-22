@@ -1,66 +1,76 @@
 layout {
-    cwd "/home/juggl3r"
-    tab name="working" focus=true hide_floating_panes=true {
+    cwd "/home"
+    tab name="ops" focus=true hide_floating_panes=true {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
+	    plugin location="file:/home/kali/Hack/zellij-blade-runner/target/wasm32-wasip1/release/zellij_blade_runner.wasm"
         }
-        pane stacked=true {
-		pane command="/home/juggl3r/.scripts/logme.sh" focus=true expanded=true
-        	pane command="/home/juggl3r/.scripts/logme.sh" size=1
-        	pane command="/home/juggl3r/.scripts/logme.sh" size=1
-	}
-        pane size=2 borderless=true {
+        pane split_direction="vertical" {
+            pane size="50%" stacked=true {
+                pane name="one" cwd="kali/htb" focus=true expanded=true 
+                pane name="two" cwd="kali/htb"
+                pane name="three" cwd="kali/htb"
+            }
+            pane size="50%" {
+                pane name="four" cwd="kali/htb" size="50%"
+                pane name="five" cwd="kali/htb" size="50%"
+            }
+        }
+        pane size=1 borderless=true {
             plugin location="zellij:status-bar"
+        }
+        floating_panes {
+            pane {
+                height 27
+                width 118
+                x 71
+                y 15
+            }
         }
     }
     tab name="vpn" hide_floating_panes=true {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
         }
-        pane command="sudo" cwd="vpn" {
-		args "openvpn" "academy-regular.ovpn"
-	}
-        pane size=2 borderless=true {
+        pane command="sudo" cwd="kali/htb/vpn" {
+            args "openvpn" "release_arena_us-release-2.ovpn"
+            start_suspended false 
+        }
+        pane size=1 borderless=true {
             plugin location="zellij:status-bar"
         }
     }
-    tab name="share" hide_floating_panes=true {
+    tab name="serve" hide_floating_panes=true {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
         }
-        pane split_direction="vertical" {
-            pane cwd="hack-share" size="50%"
-            pane size="50%" {
-                pane command="goshs" cwd="hack-share" size="50%" {
-                    args "-p" "8000" "-w"
-                    start_suspended true
-                }
-                pane command="sudo" cwd="hack-share" size="50%" {
-                    args "impacket-smbserver" "-smb2support" "shar3" "./"
-                    start_suspended true
-                }
-            }
+        pane command="python3" cwd="kali/serve" {
+            args "-m" "http.server" "8888"
+            start_suspended false 
         }
-        pane size=2 borderless=true {
+        pane size=1 borderless=true {
             plugin location="zellij:status-bar"
         }
     }
-    tab name="apps" hide_floating_panes=true {
+    tab name="gemini" hide_floating_panes=true {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
         }
-        pane cwd="/home/juggl3r"
-        pane size=2 borderless=true {
+        pane command="node" cwd="kali/htb" {
+            args "/usr/local/bin/gemini"
+            start_suspended false 
+        }
+        pane size=1 borderless=true {
             plugin location="zellij:status-bar"
         }
     }
     new_tab_template {
         pane size=1 borderless=true {
-            plugin location="tab-bar"
+            plugin location="zellij:tab-bar"
         }
         pane
-        pane size=2 borderless=true {
-            plugin location="status-bar"
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar"
         }
     }
     swap_tiled_layout name="vertical" {
@@ -76,7 +86,7 @@ layout {
                     }
                 }
             }
-            pane size=2 borderless=true {
+            pane size=1 borderless=true {
                 plugin location="status-bar"
             }
         }
@@ -97,7 +107,7 @@ layout {
                     }
                 }
             }
-            pane size=2 borderless=true {
+            pane size=1 borderless=true {
                 plugin location="status-bar"
             }
         }
@@ -124,13 +134,13 @@ layout {
                     }
                 }
             }
-            pane size=2 borderless=true {
+            pane size=1 borderless=true {
                 plugin location="status-bar"
             }
         }
     }
     swap_tiled_layout name="horizontal" {
-        tab max_panes=5 {
+        tab max_panes=4 {
             pane size=1 borderless=true {
                 plugin location="tab-bar"
             }
@@ -138,7 +148,7 @@ layout {
                 pane
                 pane
             }
-            pane size=2 borderless=true {
+            pane size=1 borderless=true {
                 plugin location="status-bar"
             }
         }
@@ -159,7 +169,7 @@ layout {
                     }
                 }
             }
-            pane size=2 borderless=true {
+            pane size=1 borderless=true {
                 plugin location="status-bar"
             }
         }
@@ -186,7 +196,7 @@ layout {
                     }
                 }
             }
-            pane size=2 borderless=true {
+            pane size=1 borderless=true {
                 plugin location="status-bar"
             }
         }
@@ -204,13 +214,14 @@ layout {
                     }
                 }
             }
-            pane size=2 borderless=true {
+            pane size=1 borderless=true {
                 plugin location="status-bar"
             }
         }
     }
     swap_floating_layout name="staggered" {
-        floating_panes 
+        floating_panes {
+        }
     }
     swap_floating_layout name="enlarged" {
         floating_panes max_panes=10 {
@@ -268,7 +279,7 @@ layout {
                 x "5%"
                 y 9
             }
-            pane focus=true {
+            pane {
                 height "90%"
                 width "90%"
                 x 10
@@ -296,7 +307,7 @@ layout {
             }
         }
         floating_panes max_panes=3 {
-            pane focus=true {
+            pane {
                 height "45%"
                 width "45%"
                 y "55%"
@@ -319,7 +330,7 @@ layout {
                 x "1%"
                 y "55%"
             }
-            pane focus=true {
+            pane {
                 height "45%"
                 width "45%"
                 x "50%"
@@ -340,3 +351,4 @@ layout {
         }
     }
 }
+

@@ -48,7 +48,9 @@ cd ..
 
 # install zellij
 cargo install --locked zellij
-## need to add this to path after
+
+## move zellij files to system
+cp -R ./init-kali/zellij/ $HOME/.config/zellij/
 
 # install other apt tools
 sudo apt install -y obsidian tor torbrowser-launcher

@@ -5,7 +5,7 @@
 
 echo '[+] Installing tools with apt'
 sudo apt update
-sudo apt install -y proxychains4 fzf git python3 python3-venv python3-packaging socat iptables wget tar ssh sshuttle unzip
+sudo apt install -y proxychains4 fzf git python3 python3-venv python3-packaging socat iptables wget tar nodejs npm ssh sshuttle unzip
 
 # Install the other tools
 #
@@ -88,6 +88,9 @@ rm ssf-linux-x86_64-3.0.0.zip
 echo '[+] Installing suo5'
 git clone https://github.com/zema1/suo5.git ~/tools/suo5
 wget https://github.com/zema1/suo5/releases/download/v1.3.1/suo5-linux-amd64 -O ~/tools/suo5/suo5-linux-amd64
+
+## install gemini
+npm install -g @google/gemini-cli
 
 echo '[+] All done with prepareTools.sh'
 
