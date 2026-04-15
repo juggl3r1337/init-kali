@@ -1,6 +1,8 @@
 #!/bin/sh
 
-# run this as kali from above init-kali repo
+# run this as kali from above init-kali repo, probably /home/kali, script makes a catchall misc dir to trash
+mkdir misc
+cd misc
 
 # update first
 sudo apt-get update -y && sudo apt-get full-upgrade -y && sudo apt-get dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean
@@ -52,9 +54,6 @@ cargo install --locked zellij
 ## move zellij files to system
 cp -R ./init-kali/zellij/ $HOME/.config/zellij/
 
-# install other apt tools
-sudo apt install -y obsidian tor torbrowser-launcher
-
 ## install ohmyszh
 ### still need to pull ohmyzsh config in
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -71,4 +70,42 @@ cp ./init-kali/aliases/logme.sh ./init-kali/aliases/dirmaker.sh ~/.scripts/
 
 ## firefox bookmarks for my hacking stuff would be great too
 
+# reminder to make SSH key and clone obsidian vault:
+echo "make SSH key and clone obsidian vault and blade runner"
+echo 'ssh-keygen -t ed25519 -C "your_email@example.com"'
+echo 'eval "$(ssh-agent -s)"'
+echo 'ssh-add ~/.ssh/id_ed25519'
+echo 'cat ~/.ssh/id_ed25519.pub'
+echo 'add to github keys'
+echo 'ssh -T git@github.com'
+echo 'git config --global user.name "juggl3r"'
+echo 'git config --global user.email "juggl3r1337@proton.me"'
+
+while [ "$input" != "ready" ]; do
+	read -p "Type 'ready' to continue: " input
+done
+
+# download vault
+git clone git@github.com:juggl3r1337/hack-vault.git
+mkdir -p hack-vault/.obsidian/plugins
+
+# download blade runner for obsidian, move to vault and install
+git clone git@github.com:juggl3r1337/blade-runner-obsidian.git
+cp -r blade-runner-obsidian/ hack-vault/.obsidian/plugins/
+cd hack-vault/.obsidian/plugins/blade-runner-obsidian/
+npm install
+cd ../../../../
+
+# download blade runner for zellij and build WASM
+# need to automate deployment still
+git clone git@github.com:juggl3r1337/blade-runner-zellij.git
+cd blade-runner-zellij/
+cargo build --target wasm32-wasip1 --release
+cd ..
+echo 'manually add blade runner to zellij now'
+
+
+echo '/n'
+
+echo '--___---- kali initialized --___----'
 

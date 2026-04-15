@@ -5,7 +5,7 @@
 
 echo '[+] Installing tools with apt'
 sudo apt update
-sudo apt install -y proxychains4 fzf git python3 python3-venv python3-packaging socat iptables wget tar nodejs npm ssh sshuttle unzip
+sudo apt install -y proxychains4 fzf git python3 python3-venv python3-packaging socat iptables wget tar nodejs npm ssh sshuttle unzip obsidian tor torbrowser-launcher neovim
 
 # Install the other tools
 #
