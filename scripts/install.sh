@@ -19,7 +19,7 @@ xset s noblank
 # xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/workspace0/last-image --set ./init-kali/resources/kali.png
 
 # install some tools via prepareTools.sh
-zsh ./init-kali/scripts/prepareTools.sh
+bash ../init-kali/scripts/prepareTools.sh
 
 # install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -49,14 +49,14 @@ cp extra/completions/_alacritty ${ZDOTDIR:-~}/.zsh_functions/_alacritty
 cd ..
 
 # install zellij
-cargo install --locked zellij
+TMPDIR=~/tmp cargo install --locked zellij
 
 ## move zellij files to system
 cp -R ./init-kali/zellij/ $HOME/.config/zellij/
 
 ## install ohmyszh
 ### still need to pull ohmyzsh config in
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # install zshrc with customized prompt and aliases
 cp ./init-kali/zsh/.zshrc $HOME/
@@ -100,6 +100,7 @@ cd ../../../../
 # need to automate deployment still
 git clone git@github.com:juggl3r1337/blade-runner-zellij.git
 cd blade-runner-zellij/
+rustup target add wasm32-wasip1
 cargo build --target wasm32-wasip1 --release
 cd ..
 echo 'manually add blade runner to zellij now'

@@ -90,7 +90,7 @@ git clone https://github.com/zema1/suo5.git ~/tools/suo5
 wget https://github.com/zema1/suo5/releases/download/v1.3.1/suo5-linux-amd64 -O ~/tools/suo5/suo5-linux-amd64
 
 ## install gemini
-npm install -g @google/gemini-cli
+sudo npm install -g @google/gemini-cli
 
 echo '[+] All done with prepareTools.sh'
 
