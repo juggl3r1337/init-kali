@@ -56,7 +56,7 @@ cp -R ./init-kali/zellij/ $HOME/.config/zellij/
 
 ## install ohmyszh
 ### still need to pull ohmyzsh config in
-#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # install zshrc with customized prompt and aliases
 cp ./init-kali/zsh/.zshrc $HOME/
